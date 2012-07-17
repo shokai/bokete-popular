@@ -3,3 +3,7 @@
 *.log
 node_modules
 config.yml
+*#*
+*.png
+*.jpg
+*.gif
