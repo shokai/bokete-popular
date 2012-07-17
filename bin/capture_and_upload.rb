@@ -11,7 +11,7 @@ out = ARGV.shift
 feed_url = 'http://bokete.jp/boke/popular/rss'
 
 feed = FeedNormalizer::FeedNormalizer.parse open(feed_url)
-urls = feed.entries.map{|i| i.url}
+urls = feed.entries.map{|i| i.url.strip}
 
 url = (urls - Logs.all).sample
 file = Capture.make url, out do |log|
