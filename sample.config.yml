@@ -1,0 +1,4 @@
+tumblr :
+  mail : 'mail@example.com'
+  pass : 'tumblr-passwd'
+  description : ''
