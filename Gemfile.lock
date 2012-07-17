@@ -1,9 +1,11 @@
 GEM
+  remote: http://rubygems.org/
   specs:
     backports (2.6.1)
     feed-normalizer (1.5.2)
       hpricot (>= 0.6)
       simple-rss (>= 1.1)
+    headless (0.3.1)
     hpricot (0.8.6)
     httpclient (2.2.5)
     simple-rss (1.2.3)
@@ -14,4 +16,5 @@ PLATFORMS
 DEPENDENCIES
   backports
   feed-normalizer
+  headless
   httpclient

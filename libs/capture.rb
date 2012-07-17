@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require 'tmpdir'
 require 'base64'
+require 'headless'
 
 module Capture
   def self.make(url, fname=nil)
@@ -11,11 +12,13 @@ module Capture
     
     Dir.mktmpdir do |dir|
       tmp = "#{dir}/TMP.png"
-      cmd = "capturejs -u '#{url}' -o '#{tmp}' --selector 'div.boke-entry'"
-      if block_given?
-        yield cmd
+      Headless.ly do
+        cmd = "capturejs -u '#{url}' -o '#{tmp}' --selector 'div.boke-entry'"
+        if block_given?
+          yield cmd
+        end
+        system cmd
       end
-      system cmd
       cmd = "convert -trim -bordercolor '#FFFFFF' -border '5%x5%' '#{tmp}' '#{fname}'"
       if block_given?
         yield cmd
