@@ -4,6 +4,7 @@
 
     % brew install phantomjs imagemagick
     % npm install -g capturejs
+    % which capturejs
     % bundle install
 
 

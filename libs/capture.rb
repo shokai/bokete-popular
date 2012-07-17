@@ -13,7 +13,8 @@ module Capture
     Dir.mktmpdir do |dir|
       tmp = "#{dir}/TMP.png"
       Headless.ly do
-        cmd = "capturejs -u '#{url}' -o '#{tmp}' --selector 'div.boke-entry'"
+        capturejs = Conf['capturejs'] || 'capturejs'
+        cmd = "#{capturejs} -u '#{url}' -o '#{tmp}' --selector 'div.boke-entry'"
         if block_given?
           yield cmd
         end
