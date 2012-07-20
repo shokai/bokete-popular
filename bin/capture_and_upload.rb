@@ -1,17 +1,13 @@
 #!/usr/bin/env ruby
 require File.expand_path '../bootstrap', File.dirname(__FILE__)
+require 'bokete'
 require 'capture'
 require 'tumblr'
 require 'logs'
-require 'feed-normalizer'
-require 'open-uri'
 
 out = ARGV.shift
 
-feed_url = 'http://bokete.jp/boke/popular/rss'
-
-feed = FeedNormalizer::FeedNormalizer.parse open(feed_url)
-urls = feed.entries.map{|i| i.url.strip}
+urls = [Bokete.popular, Bokete.hot].flatten.uniq
 
 url = (urls - Logs.all).sample
 file = Capture.make url, out do |log|
