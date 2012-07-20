@@ -31,6 +31,7 @@ module Capture
 end
 
 if __FILE__ == $0
+  require File.expand_path '../bootstrap', File.dirname(__FILE__)
   if ARGV.size < 1
     puts "ruby #{$0} http://bokete.jp/boke/12345 boke.png"
     exit 1
@@ -38,5 +39,7 @@ if __FILE__ == $0
   
   url = ARGV.shift
   fname = ARGV.shift
-  Capture.make url, fname
+  Capture.make url, fname do |log|
+    puts log
+  end
 end
