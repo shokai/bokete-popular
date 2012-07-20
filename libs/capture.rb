@@ -14,7 +14,7 @@ module Capture
       tmp = "#{dir}/TMP.png"
       Headless.ly do
         capturejs = Conf['capturejs'] || 'capturejs'
-        cmd = "#{capturejs} -u '#{url}' -o '#{tmp}' --selector 'div.boke-entry'"
+        cmd = "#{capturejs} -u '#{url}' -o '#{tmp}' --selector 'div.boke-entry' --javascript-file '#{File.expand_path 'extract.js', File.dirname(__FILE__)}'"
         if block_given?
           yield cmd
         end
